@@ -1,0 +1,64 @@
+:root{
+  --bg:#f4f4f4;
+  --frame-border:#000;
+  --max-width:1600px;
+  --max-height:900px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(180deg,#3d0505,#380707);
+  font-family: "Georgia", "Times New Roman", serif;
+  padding:18px;
+}
+
+/* palco central com proporção 16:9 */
+.stage{
+  width:100%;
+  max-width:calc(var(--max-width) - 40px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* frame com aspecto 16:9; escala proporcional em telas menores */
+.frame{
+  width:100%;
+  aspect-ratio: 16 / 9;
+  max-height:calc(var(--max-height) - 40px);
+  background:hsl(0, 73%, 16%);
+  border:8px solid var(--frame-border);
+  padding:12px;
+  box-shadow:0 12px 40px rgba(95, 95, 95, 0.1);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+/* SVG ocupa a maior parte do frame mantendo margens */
+.canvas{
+  width:92%;
+  height:auto;
+  display:block;
+  filter:grayscale(100%) contrast(110%);
+}
+
+/* legenda abaixo do SVG */
+.caption{
+  margin-top:8px;
+  font-size:14px;
+  color:#111;
+  text-align:center;
+}
+
+/* responsividade */
+@media (max-width:900px){
+  .stage{max-width:900px}
+  .frame{border-width:6px}
+  .canvas{width:98%}
+}
